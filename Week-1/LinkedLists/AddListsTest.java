@@ -1,14 +1,10 @@
 package fun.algorithms;
 
-import java.util.EmptyStackException;
-import java.util.Stack;
-
-import fun.algorithms.AddListsTest.ListNode;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class ReverseBetweenTest extends TestCase {
+public class AddListsTest extends TestCase {
 
 	/**
 	 * Create the test case
@@ -16,7 +12,7 @@ public class ReverseBetweenTest extends TestCase {
 	 * @param testName
 	 *            name of the test case
 	 */
-	public ReverseBetweenTest(String testName) {
+	public AddListsTest(String testName) {
 		super(testName);
 	}
 
@@ -24,7 +20,7 @@ public class ReverseBetweenTest extends TestCase {
 	 * @return the suite of tests being tested
 	 */
 	public static Test suite() {
-		return new TestSuite(ReverseBetweenTest.class);
+		return new TestSuite(AddListsTest.class);
 	}
 
 	/**
@@ -33,59 +29,43 @@ public class ReverseBetweenTest extends TestCase {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void testAddLists() {
 
-		// ListNode nodeA = new ListNode(2);
-		// nodeA.next = new ListNode(4);
-		// nodeA.next.next = new ListNode(3);
+		ListNode nodeA = new ListNode(2);
+		nodeA.next = new ListNode(4);
+		nodeA.next.next = new ListNode(3);
 
-		// ListNode node = reverseBetween(nodeA, 1, 2);
+		ListNode nodeB = new ListNode(5);
+		nodeB.next = new ListNode(6);
+		nodeB.next.next = new ListNode(4);
 
-		ListNode nodeA = new ListNode(1);
+		ListNode node = addTwoNumbers(nodeA, nodeB);
 
-		ListNode node = reverseBetween(nodeA, 1, 1);
-
-		System.out.println(node.val);
+		System.out.println(node.val + " -->" + node.next.val + "-->" + node.next.next.val);
 	}
 
-	public ListNode reverseBetween(ListNode listNode, int startPosition, int endPosition) {
-		int index = 1;
+	public ListNode addTwoNumbers(ListNode nodeA, ListNode nodeB) {
+		int carry = 0;
+
 		ListNode returnNode = new ListNode(0);
 		ListNode returnNodeHead = returnNode;
-		Stack<Integer> stack = new Stack<>();
-		while (listNode != null) {
-			while (!stack.isEmpty()) {
-				try {
-					returnNode.next = new ListNode(stack.pop());
-					returnNode = returnNode.next;
-				} catch (EmptyStackException ex) {
-					System.out.println("Emtpy STack.");
-					break;
-				}
+
+		while (nodeA != null || nodeB != null) {
+			if (nodeA != null) {
+				carry += nodeA.val;
+				nodeA = nodeA.next;
 			}
 
-			if (index == startPosition) {
-				while (startPosition <= endPosition) {
-					stack.push(listNode.val);
-					listNode = listNode.next;
-					startPosition++;
-					index++;
-				}
-				startPosition = Integer.MIN_VALUE; // reset startPosition
-			} else {
-				returnNode.next = new ListNode(listNode.val);
-				returnNode = returnNode.next;
-				listNode = listNode.next;
-				index++;
+			if (nodeB != null) {
+				carry += nodeB.val;
+				nodeB = nodeB.next;
 			}
+
+			returnNode.next = new ListNode(carry % 10);
+			returnNode = returnNode.next;
+			carry = carry / 10;
 		}
 
-		while (!stack.isEmpty()) {
-			try {
-				returnNode.next = new ListNode(stack.pop());
-				returnNode = returnNode.next;
-			} catch (EmptyStackException ex) {
-				System.out.println("Emtpy STack.");
-				break;
-			}
+		if (carry > 0) {
+			returnNode.next = new ListNode(carry);
 		}
 
 		return returnNodeHead.next;
@@ -100,5 +80,4 @@ public class ReverseBetweenTest extends TestCase {
 			next = null;
 		}
 	}
-
 }
