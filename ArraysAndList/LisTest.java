@@ -4,7 +4,11 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-// https://www.interviewbit.com/problems/longest-increasing-subsequence/
+//    Find the longest increasing subsequence of a given sequence / array.
+//
+//    In other words, find a subsequence of array in which the subsequence’s elements are in strictly increasing order, and in which the subsequence is as long as possible.
+//    This subsequence is not necessarily contiguous, or unique.
+//    In this case, we only care about the length of the longest increasing subsequence.
 public class LisTest extends TestCase {
     /**
      * Create the test case

@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for simple ConcentricCircularMatrix.
+ * Unit test for finding the missing and repeating numbers in an array.
  */
 public class MissingRepeatingTest extends TestCase {
     /**

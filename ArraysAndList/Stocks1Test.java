@@ -4,7 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-// https://www.interviewbit.com/problems/best-time-to-buy-and-sell-stocks-i/
+//Say you have an array for which the ith element is the price of a given stock on day i.
+//If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
 public class Stocks1Test extends TestCase {
     /**
      * Create the test case
