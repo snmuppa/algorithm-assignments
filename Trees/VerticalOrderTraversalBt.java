@@ -27,8 +27,12 @@ The nodes with values 3 and 15 occur at positions (0, 0) and (0, -2);
 The node with value 20 occurs at position (1, -1);
 The node with value 7 occurs at position (2, -2).
 Example 2:
-
-
+       
+      1
+     / \
+   2     3
+  / \   / \  
+ 4  5  6   7
 
 Input: [1,2,3,4,5,6,7]
 Output: [[4],[2],[1,5,6],[3],[7]]
@@ -58,7 +62,7 @@ Each node's value will be between 0 and 1000.
  *     }
  * }
  */
-class VerticalOrderTraversalBT {
+class VerticalOrderTraversalBt {
     int min = Integer.MAX_VALUE;
     int max = Integer.MIN_VALUE;
     
